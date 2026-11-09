@@ -1,0 +1,38 @@
+# groovy/results/nan_compare.txt: a @CompileStatic class compiled by Groovy 3.0.24 (FileSystemCompiler), run on
+# openjdk version "21.0.12.1" 2026-08-18, then javap -c (the gt and ge methods). C, Java and IEEE 754 say
+# every ordered comparison with a NaN is false.
+    import groovy.transform.CompileStatic
+    @CompileStatic
+    class NanCmp {
+      static boolean gt(double a, double b) { return a > b }
+      static boolean ge(double a, double b) { return a >= b }
+      static boolean lt(double a, double b) { return a < b }
+      static boolean le(double a, double b) { return a <= b }
+      static void main(String[] args) {
+        double n = Double.NaN
+        println('NaN > 1.0: ' + gt(n, 1.0d) + '   NaN >= 1.0: ' + ge(n, 1.0d) + '   NaN < 1.0: ' + lt(n, 1.0d) +
+                '   NaN <= 1.0: ' + le(n, 1.0d) + '   1.0 > NaN: ' + gt(1.0d, n) + '   1.0 >= NaN: ' + ge(1.0d, n))
+      }
+    }
+
+NaN > 1.0: true   NaN >= 1.0: true   NaN < 1.0: false   NaN <= 1.0: false   1.0 > NaN: true   1.0 >= NaN: true
+  public static boolean gt(double, double);
+    Code:
+       0: dload_0
+       1: dload_2
+       2: dcmpg
+       3: ifle          10
+       6: iconst_1
+       7: goto          11
+      10: iconst_0
+      11: ireturn
+  public static boolean ge(double, double);
+    Code:
+       0: dload_0
+       1: dload_2
+       2: dcmpg
+       3: iflt          10
+       6: iconst_1
+       7: goto          11
+      10: iconst_0
+      11: ireturn

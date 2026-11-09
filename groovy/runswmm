@@ -1,0 +1,13 @@
+#!/bin/sh
+# runswmm - the Groovy port's command line, as EPA's: runswmm <input file> <report file> [output file]
+# The classes are Groovy compiled with @CompileStatic; at run time they need groovy-3.0.24.jar (GROOVY_LIB, default
+# /opt/gradle/lib, where Gradle keeps it). The JVM's default heap is a quarter of the machine's memory, and one corpus
+# model (Hydrology/sewer_rdii_problem.inp) allocates 3.38 GB of RDII rainfall-history arrays, as EPA itself does
+# (gate/rdii_memory.py; lessons/14): the Java and Kotlin ports run it with the parallel collector and 75% of memory,
+# and so does this one. -XX:-DontCompileHugeMethods: HotSpot never compiles a method of more than 8,000 bytes of
+# bytecode, and Groovy's translations of pow (9,161 bytes), acos, asin and tan are over that line, so by default they
+# stay in the interpreter: Hydrology/SCANLON.inp took more than 380 s that way and 32.6 s with the flag
+# (results/hugemethod.txt).
+L=${GROOVY_LIB:-/opt/gradle/lib}
+GJ=$(ls "$L"/groovy-3.*.jar | grep -E '/groovy-3\.[0-9.]+\.jar$' | sort -V | tail -1)
+exec env -u JAVA_TOOL_OPTIONS java -XX:-DontCompileHugeMethods -XX:+UseParallelGC -XX:MaxRAMPercentage=75 -cp "$(dirname "$0")/swmm5.jar:$GJ" swmm5.Main "$@"

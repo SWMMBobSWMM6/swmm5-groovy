@@ -1,0 +1,45 @@
+exp 1000016
+log 1000016
+log10 1000016
+pow 1000272
+sin 1000016
+cos 1000016
+tan 1000016
+asin 1000016
+acos 1000016
+atan 1000016
+fma 1000256
+exp 300000
+log 200000
+log10 300000
+pow 700000
+sin 300000
+cos 300000
+tan 300000
+asin 300000
+acos 300000
+atan 300000
+== Groovy 3.0.24 on openjdk version "21.0.12.1" 2026-08-18: vectors.bin (N = 1000000 per function)
+exp    0 of 1000016 differ (0 of them a NaN sign)   (1.500 us/call)
+log    0 of 1000016 differ (0 of them a NaN sign)   (0.351 us/call)
+log10  0 of 1000016 differ (0 of them a NaN sign)   (0.383 us/call)
+pow    0 of 1000272 differ (0 of them a NaN sign)   (1.156 us/call)
+sin    0 of 1000016 differ (0 of them a NaN sign)   (0.806 us/call)
+cos    0 of 1000016 differ (0 of them a NaN sign)   (0.921 us/call)
+tan    0 of 1000016 differ (0 of them a NaN sign)   (1.357 us/call)
+asin   0 of 1000016 differ (0 of them a NaN sign)   (1.220 us/call)
+acos   0 of 1000016 differ (0 of them a NaN sign)   (1.860 us/call)
+atan   0 of 1000016 differ (0 of them a NaN sign)   (1.265 us/call)
+fma    0 of 1000256 differ (0 of them a NaN sign)   (1.062 us/call)
+== edge.bin
+exp    0 of 300000 differ (0 of them a NaN sign)   (6.559 us/call)
+log    0 of 200000 differ (0 of them a NaN sign)   (0.778 us/call)
+log10  0 of 300000 differ (0 of them a NaN sign)   (0.634 us/call)
+pow    0 of 700000 differ (0 of them a NaN sign)   (1.959 us/call)
+sin    0 of 300000 differ (0 of them a NaN sign)   (1.144 us/call)
+cos    0 of 300000 differ (0 of them a NaN sign)   (1.675 us/call)
+tan    0 of 300000 differ (0 of them a NaN sign)   (2.082 us/call)
+asin   0 of 300000 differ (0 of them a NaN sign)   (1.642 us/call)
+acos   0 of 300000 differ (0 of them a NaN sign)   (2.854 us/call)
+atan   0 of 300000 differ (0 of them a NaN sign)   (2.494 us/call)
+exit 0

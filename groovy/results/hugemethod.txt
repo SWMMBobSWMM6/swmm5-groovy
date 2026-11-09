@@ -1,0 +1,7 @@
+# Hydrology/SCANLON.inp (gate id 77e00bc268b0), a copy run in a scratch folder, groovy/swmm5.jar built 2026-11-08
+# from the generated sources, Groovy 3.0.24, OpenJDK 21.0.12.1, 2 cores shared with another agent's run.
+# Method sizes (javap -c, last bytecode offset): Glibm.pow 9161, ieee754_acos 9732, tan 8580, ieee754_asin 8244,
+# sin 7029, cos 7190; no engine method over 7000. HotSpot's HugeMethodLimit is 8000.
+java -XX:+DontCompileHugeMethods (the default)   more than 380.9 s, stopped (the .out was 64,487,418 bytes in, incomplete)
+java -XX:-DontCompileHugeMethods                 32.6 s wall; .out identical to EPA's, .rpt identical except the clock lines
+# Kotlin port on the same model (gate kt_1): 21.1 s.
